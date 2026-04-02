@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "name": "pergoclean",
+  "buildCommand": "npm run build",
+  "devCommand": "npm run dev",
+  "installCommand": "npm install",
+  "framework": "nextjs",
+  "outputDirectory": ".next",
+  "regions": ["fra1"],
+  "env": {
+    "NEXT_PUBLIC_SITE_URL": "https://pergoclean.vercel.app",
+    "NEXT_PUBLIC_COMPANY_NAME": "PergoClean"
+  },
+  "build": {
+    "env": {
+      "NODE_VERSION": "18"
+    }
+  }
+}
