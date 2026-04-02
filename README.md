@@ -2,7 +2,12 @@
 
 Professional pergola cleaning service website built with Next.js 14, TypeScript, and Tailwind CSS.
 
-## 🚀 Features
+## 🚀 Live Demo
+
+- **Production**: https://pergoclean.vercel.app
+- **GitHub**: https://github.com/tozsolutions/PergoClean
+
+## ✨ Features
 
 - **Pixel-Perfect Design**: Matches reference designs with high fidelity
 - **Responsive**: Mobile-first, works on all devices
@@ -145,12 +150,54 @@ src/
 
 ## 🚢 Deployment
 
-### Vercel (Recommended)
+### Vercel (Recommended) - ALREADY DEPLOYED
 
-1. Push your code to GitHub
-2. Import your repository to Vercel
-3. Add environment variables in Vercel dashboard
-4. Deploy
+The project is already deployed to Vercel:
+
+- **Production URL**: https://pergoclean.vercel.app
+- **GitHub Repository**: https://github.com/tozsolutions/PergoClean
+- **Vercel Project**: https://vercel.com/tozsolutions/pergoclean
+
+#### Automatic Deployments
+
+Every push to the `main` branch automatically triggers a deployment on Vercel:
+
+```bash
+# Make changes
+git add .
+git commit -m "Your changes"
+git push origin main
+
+# Vercel will automatically deploy!
+```
+
+#### Manual Deployment
+
+```bash
+# Install Vercel CLI
+npm install -g vercel
+
+# Deploy to production
+vercel --prod
+```
+
+### Environment Variables
+
+Set these in Vercel Dashboard > Project Settings > Environment Variables:
+
+```env
+NEXT_PUBLIC_SITE_URL=https://pergoclean.vercel.app
+NEXT_PUBLIC_COMPANY_NAME=PergoClean
+QUOTE_WEBHOOK_URL=your-n8n-webhook-url
+APPOINTMENT_WEBHOOK_URL=your-n8n-webhook-url
+PHOTO_WEBHOOK_URL=your-n8n-webhook-url
+CONTACT_WEBHOOK_URL=your-n8n-webhook-url
+NOTIFICATION_EMAIL=Merhaba@pergoclean.com.tr
+WHATSAPP_PRIMARY=905367731404
+WHATSAPP_SECONDARY=905309550028
+```
+
+### Local Build Test
 
 ```bash
 # Build locally to test
@@ -158,13 +205,6 @@ npm run build
 
 # Start production server
 npm start
-```
-
-### Docker
-
-```bash
-docker build -t pergoclean-web .
-docker run -p 3000:3000 pergoclean-web
 ```
 
 ## 🔌 Webhook Integration
