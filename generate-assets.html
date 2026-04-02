@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PergoClean Asset Generator</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background: #f5f5f5; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        h1 { color: #0f1e42; }
+        .status { padding: 10px; margin: 10px 0; border-radius: 8px; }
+        .success { background: #d4edda; color: #155724; }
+        .info { background: #d1ecf1; color: #0c5460; }
+        canvas { display: none; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>PergoClean Asset Generator</h1>
+        <div id="status" class="status info">Generating placeholder images...</div>
+    </div>
+    <canvas id="canvas"></canvas>
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        const status = document.getElementById('status');
+
+        const images = [
+            { path: '../public/assets/images/hero/pergola-hero.jpg', width: 1920, height: 1080, text: 'Pergola Hero', bg: '#1a365d' },
+            { path: '../public/assets/images/portfolio/portfolio-1.jpg', width: 400, height: 300, text: 'Portfolio 1', bg: '#0d9488' },
+            { path: '../public/assets/images/portfolio/portfolio-2.jpg', width: 400, height: 300, text: 'Portfolio 2', bg: '#0f766e' },
+            { path: '../public/assets/images/portfolio/portfolio-3.jpg', width: 400, height: 300, text: 'Portfolio 3', bg: '#115e59' },
+            { path: '../public/assets/images/portfolio/portfolio-4.jpg', width: 400, height: 300, text: 'Portfolio 4', bg: '#134e4a' },
+            { path: '../public/assets/images/portfolio/portfolio-5.jpg', width: 400, height: 300, text: 'Portfolio 5', bg: '#14b8a6' },
+            { path: '../public/assets/images/portfolio/portfolio-6.jpg', width: 400, height: 300, text: 'Portfolio 6', bg: '#2dd4bf' },
+            { path: '../public/assets/images/portfolio/instagram-1.jpg', width: 300, height: 300, text: 'Instagram 1', bg: '#e11d48' },
+            { path: '../public/assets/images/portfolio/instagram-2.jpg', width: 300, height: 300, text: 'Instagram 2', bg: '#db2777' },
+            { path: '../public/assets/images/portfolio/instagram-3.jpg', width: 300, height: 300, text: 'Instagram 3', bg: '#ec4899' },
+            { path: '../public/assets/images/portfolio/instagram-4.jpg', width: 300, height: 300, text: 'Instagram 4', bg: '#f472b6' },
+            { path: '../public/assets/images/references/customer-1.jpg', width: 56, height: 56, text: 'M', bg: '#0d9488' },
+            { path: '../public/assets/images/references/customer-2.jpg', width: 56, height: 56, text: 'A', bg: '#0f766e' },
+            { path: '../public/assets/images/references/customer-3.jpg', width: 56, height: 56, text: 'C', bg: '#115e59' },
+        ];
+
+        let currentIndex = 0;
+
+        function generateImage() {
+            if (currentIndex >= images.length) {
+                status.className = 'status success';
+                status.textContent = '✅ All images generated successfully!';
+                return;
+            }
+
+            const img = images[currentIndex];
+            canvas.width = img.width;
+            canvas.height = img.height;
+
+            // Background gradient
+            const gradient = ctx.createLinearGradient(0, 0, img.width, img.height);
+            gradient.addColorStop(0, img.bg);
+            gradient.addColorStop(1, adjustColor(img.bg, 20));
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, img.width, img.height);
+
+            // Add decorative elements
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.1)';
+            for (let i = 0; i < 10; i++) {
+                const x = Math.random() * img.width;
+                const y = Math.random() * img.height;
+                const size = Math.random() * 50 + 20;
+                ctx.beginPath();
+                ctx.arc(x, y, size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+
+            // Text
+            ctx.fillStyle = '#ffffff';
+            ctx.font = `bold ${Math.floor(img.width / 15)}px Arial`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(img.text, img.width / 2, img.height / 2);
+
+            // Download
+            const link = document.createElement('a');
+            link.download = img.path.split('/').pop();
+            link.href = canvas.toDataURL('image/jpeg', 0.8);
+            link.click();
+
+            status.textContent = `Generated ${currentIndex + 1}/${images.length}: ${img.text}`;
+            currentIndex++;
+            setTimeout(generateImage, 300);
+        }
+
+        function adjustColor(color, amount) {
+            const num = parseInt(color.replace('#', ''), 16);
+            const r = Math.min(255, (num >> 16) + amount);
+            const g = Math.min(255, ((num >> 8) & 0x00FF) + amount);
+            const b = Math.min(255, (num & 0x0000FF) + amount);
+            return `#${(1 << 24 | r << 16 | g << 8 | b).toString(16).slice(1)}`;
+        }
+
+        // Start generation
+        setTimeout(generateImage, 500);
+    </script>
+</body>
+</html>

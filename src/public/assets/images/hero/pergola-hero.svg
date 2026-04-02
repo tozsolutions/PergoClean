@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <linearGradient id="heroGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a365d;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2c5282;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#heroGrad)"/>
+  <circle cx="300" cy="200" r="100" fill="rgba(255,255,255,0.1)"/>
+  <circle cx="1600" cy="800" r="150" fill="rgba(255,255,255,0.1)"/>
+  <circle cx="800" cy="600" r="80" fill="rgba(255,255,255,0.08)"/>
+  <text x="960" y="500" font-family="Arial, sans-serif" font-size="72" font-weight="bold" fill="#ffffff" text-anchor="middle">PERGOLA</text>
+  <text x="960" y="580" font-family="Arial, sans-serif" font-size="72" font-weight="bold" fill="#ffffff" text-anchor="middle">HERO IMAGE</text>
+  <text x="960" y="660" font-family="Arial, sans-serif" font-size="32" fill="#fbbf24" text-anchor="middle">Replace with actual pergola photo</text>
+</svg>

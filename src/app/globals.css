@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap');
+@import url('https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css');
+
+/* Base Styles */
+:root {
+  --foreground-rgb: 15, 30, 66;
+  --background-start-rgb: 255, 255, 255;
+  --background-end-rgb: 246, 248, 252;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 10, 15, 30;
+    --background-end-rgb: 15, 30, 66;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Hide scrollbar for horizontal scrolling sections */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Glassmorphism utility */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Premium gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Smooth transitions */
+.transition-premium {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Button hover effects */
+.btn-primary {
+  @apply px-8 py-4 bg-white text-gray-900 rounded-full font-semibold text-sm hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl;
+}
+
+.btn-whatsapp {
+  @apply px-8 py-4 bg-green-500 text-white rounded-full font-semibold text-sm hover:bg-green-600 transition-all shadow-lg hover:shadow-xl flex items-center gap-2;
+}
+
+/* Section heading styles */
+.section-label {
+  @apply text-xs font-bold text-gray-500 uppercase tracking-widest mb-3;
+}
+
+.section-heading {
+  @apply text-5xl font-extrabold text-gray-900 leading-tight;
+}
+
+/* Card styles */
+.card-premium {
+  @apply bg-white rounded-3xl p-8 shadow-soft hover:shadow-large transition-all duration-300 border border-gray-100;
+}
+
+/* Form input styles */
+.input-premium {
+  @apply w-full px-4 py-3 bg-white border-b-2 border-gray-300 focus:border-teal-600 outline-none transition-colors text-sm;
+}
+
+.input-rounded {
+  @apply w-full px-4 py-3 bg-white rounded-xl border border-gray-200 focus:border-teal-500 outline-none transition-colors text-sm;
+}
