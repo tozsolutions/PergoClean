@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter, Playfair_Display } from 'next/font/google';
 import './globals.css';
 import { siteConfig } from '@/lib/site';
+import Script from 'next/script';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -108,11 +109,13 @@ export default function RootLayout({
     <html lang="tr">
       <head>
         {/* Global Site Tag (gtag.js) - Google Analytics */}
-        <script
+        <Script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-PTZDW59FXV"
         />
-        <script
+        <Script
+          id="gtag-init"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
